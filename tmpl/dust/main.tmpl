@@ -1,0 +1,13 @@
+<ul>
+{#people}
+  <li>
+  <h1>Name: {name}</h1>
+  <p>Age: {age}</p>
+  {#nice} <strong>Nice person.</strong>{/nice}
+  {#children}
+    <b>{.}</b>
+  {/children}
+  </li>
+  <pre>{>person/}</pre>
+{/people}
+</ul>
