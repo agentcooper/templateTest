@@ -23,3 +23,5 @@ Node.js is doing templating using Hogan.js (Mustache), exchanging data with perl
 ```
 Execution time: 0.0068559647 s, trip time: 0.0056278706 s
 ```
+
+server.js: `templating: 2ms`
