@@ -25,3 +25,19 @@ Execution time: 0.0068559647 s, trip time: 0.0056278706 s
 ```
 
 server.js: `templating: 2ms`
+
+Test 3
+============
+
+1. Get [JavaScript::V8](http://search.cpan.org/~dgl/JavaScript-V8-0.07/lib/JavaScript/V8.pm)
+2. `perl test_v8.pl`
+
+```
+                    Rate html_template_pro       js_mustache          js_hogan
+html_template_pro  273/s                --              -68%              -85%
+js_mustache        847/s              210%                --              -54%
+js_hogan          1852/s              578%              119%                --
+```
+
+`V8 version 3.9.24`
+`Perl 5.12`
