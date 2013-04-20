@@ -29,7 +29,7 @@ server.js: `templating: 2ms`
 Test 3
 ============
 
-[Handlebars](http://handlebarsjs.com/) vs [Mustache](https://github.com/janl/mustache.js/) vs [http://twitter.github.io/hogan.js/](Hogan) vs [HTML::Template::Pro](http://search.cpan.org/~viy/HTML-Template-Pro-0.9509/lib/HTML/Template/Pro.pm)
+[Handlebars](http://handlebarsjs.com/) vs [Mustache](https://github.com/janl/mustache.js/) vs [Hogan](http://twitter.github.io/hogan.js/) vs [HTML::Template::Pro](http://search.cpan.org/~viy/HTML-Template-Pro-0.9509/lib/HTML/Template/Pro.pm)
 
 1. Get [JavaScript::V8](http://search.cpan.org/~dgl/JavaScript-V8-0.07/lib/JavaScript/V8.pm)
 2. `perl test_v8.pl`
