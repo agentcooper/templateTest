@@ -12,6 +12,7 @@ use data;
 
 my $ctx1 = JavaScript::V8::Context->new();
 my $ctx2 = JavaScript::V8::Context->new();
+my $ctx3 = JavaScript::V8::Context->new();
 
 my $json = JSON::XS::encode_json($data::basic);
 
@@ -23,6 +24,10 @@ close FH;
 
 open FH, 'lib/hogan-2.0.0.js';
 read FH, my $buffer2, -s 'lib/hogan-2.0.0.js';
+close FH;
+
+open FH, 'lib/handlebars.js';
+read FH, my $buffer3, -s 'lib/handlebars.js';
 close FH;
 
 # load templates
@@ -41,6 +46,7 @@ $mustachePerson =~ s/^\s+|\s+$//g; # trim
 
 $ctx1->eval($buffer1);
 $ctx2->eval($buffer2);
+$ctx3->eval($buffer3);
 
 my $template = HTML::Template::Pro->new(
   filename => 'tmpl/perl/main.tmpl',
@@ -58,13 +64,22 @@ $ctx2->eval(qq{
     var main = Hogan.compile('$mustacheMain');
 });
 
+$ctx3->eval(qq{
+    Handlebars.registerPartial('person', '$mustachePerson');
+    var main = Handlebars.compile('$mustacheMain');
+});
+
 # print $ctx1->eval(qq{
-#             main($json);
-#         });
+#     main($json);
+# });
 
 # print $ctx2->eval(qq{
-#             main.render($json, {person: person});
-#         });
+#     main.render($json, {person: person});
+# });
+
+# print $ctx3->eval(qq{
+#     main($json);
+# });
 
 # exit 0;
 
@@ -78,6 +93,12 @@ Benchmark::cmpthese(1000, {
     js_hogan => sub {
         $ctx2->eval(qq{
             main.render($json, {person: person});
+        });
+    },
+
+    js_handlebars => sub {
+        $ctx3->eval(qq{
+            main($json);
         });
     },
 
