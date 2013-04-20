@@ -29,14 +29,17 @@ server.js: `templating: 2ms`
 Test 3
 ============
 
+[Handlebars](http://handlebarsjs.com/) vs [Mustache](https://github.com/janl/mustache.js/) vs [http://twitter.github.io/hogan.js/](Hogan) vs [HTML::Template::Pro](http://search.cpan.org/~viy/HTML-Template-Pro-0.9509/lib/HTML/Template/Pro.pm)
+
 1. Get [JavaScript::V8](http://search.cpan.org/~dgl/JavaScript-V8-0.07/lib/JavaScript/V8.pm)
 2. `perl test_v8.pl`
 
 ```
-                    Rate html_template_pro       js_mustache          js_hogan
-html_template_pro  273/s                --              -68%              -85%
-js_mustache        847/s              210%                --              -54%
-js_hogan          1852/s              578%              119%                --
+                    Rate html_template_pro js_mustache js_handlebars    js_hogan
+html_template_pro  260/s                --        -69%          -82%        -87%
+js_mustache        840/s              224%          --          -40%        -58%
+js_handlebars     1408/s              442%         68%            --        -30%
+js_hogan          2000/s              670%        138%           42%          --
 ```
 
 `V8 version 3.9.24`
