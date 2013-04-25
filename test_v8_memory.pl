@@ -62,7 +62,7 @@ $ctx1->eval(qq{
 
 # exit 0;
 
-print "Perl memory size after tempater init: " . memory_usage();
+print "Perl memory size after templater init: " . memory_usage();
 
 foreach (1..10000) {
     $ctx1->eval(qq{
