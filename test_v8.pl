@@ -1,3 +1,5 @@
+#!/usr/bin/perl -l
+
 use strict;
 use warnings;
 
@@ -13,7 +15,6 @@ use data;
 my $ctx1 = JavaScript::V8::Context->new();
 my $ctx2 = JavaScript::V8::Context->new();
 my $ctx3 = JavaScript::V8::Context->new();
-
 my $json = JSON::XS::encode_json($data::basic);
 
 # load javascript
@@ -35,11 +36,13 @@ close FH;
 open FH, 'tmpl/mustache/main.tmpl';
 read FH, my $mustacheMain, -s 'tmpl/mustache/main.tmpl';
 close FH;
+
 $mustacheMain =~ s/^\s+|\s+$//g; # trim
 
 open FH, 'tmpl/mustache/person.tmpl';
 read FH, my $mustachePerson, -s 'tmpl/mustache/person.tmpl';
 close FH;
+
 $mustachePerson =~ s/^\s+|\s+$//g; # trim
 
 # setup
@@ -52,6 +55,7 @@ my $template = HTML::Template::Pro->new(
   filename => 'tmpl/perl/main.tmpl',
   die_on_bad_params => 0
 );
+
 $template->param($data::basic);
 
 $ctx1->eval(qq{
