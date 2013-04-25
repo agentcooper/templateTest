@@ -44,3 +44,19 @@ js_hogan          2000/s              670%        138%           42%          --
 
 `V8 version 3.9.24`
 `Perl 5.12`
+
+V8 memory test
+============
+
+1. Get `Proc::ProcessTable`
+2. `perl test_v8_memory.pl`
+
+```
+Perl memory size before ctx create: 6288
+Perl memory size after ctx create: 9164
+Perl memory size after templater init: 10124
+Perl memory size after test: 49756
+```
+
+`V8 version 3.9.24`
+`Perl 5.12`
